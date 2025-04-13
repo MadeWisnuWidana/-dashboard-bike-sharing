@@ -19,7 +19,7 @@ def load_data():
 
 data = load_data()
 
-st.subheader("📄 Dataset Bike Sharing")
+st.subheader("Dataset Bike Sharing")
 
 show_all = st.checkbox("Tampilkan Seluruh Dataset")
 if show_all:
@@ -31,7 +31,7 @@ pivot_casual_registered = data.groupby('weekend')[['casual', 'registered']].sum(
 pivot_casual_registered.index = pivot_casual_registered.index.map({0: 'Weekday', 1: 'Weekend'})
 pivot_casual_registered['total'] = pivot_casual_registered['casual'] + pivot_casual_registered['registered']
 
-st.subheader("📊 Penggunaan Sepeda oleh Casual vs Registered (Weekday vs Weekend)")
+st.subheader("Penggunaan Sepeda Weekday vs Weekend")
 st.dataframe(pivot_casual_registered, use_container_width=True)
 
 fig1, ax1 = plt.subplots(figsize=(8, 5))
@@ -56,7 +56,6 @@ ax1.set_yticklabels([f"{y:,}" for y in y_ticks])
 
 st.pyplot(fig1)
 
-# Pivot Table: Rata-rata penggunaan sepeda per jam per musim
 pivot_jam_musim = data.pivot_table(
     index='hr_label',
     columns='season_name',
@@ -68,7 +67,7 @@ pivot_jam_musim_reset = pivot_jam_musim.copy()
 pivot_jam_musim_reset['hr'] = [int(h.split(':')[0]) for h in pivot_jam_musim.index]
 pivot_jam_musim_reset.set_index('hr', inplace=True)
 
-st.subheader("🕒 Rata-rata Penggunaan Sepeda per Jam per Musim")
+st.subheader("Rata-rata Penggunaan Sepeda per Jam per Musim")
 st.dataframe(pivot_jam_musim, use_container_width=True)
 
 fig2, ax2 = plt.subplots(figsize=(12, 6))
@@ -91,7 +90,6 @@ ax2.legend(title='Musim')
 
 st.pyplot(fig2)
 
-# Heatmap Total Penggunaan Sepeda berdasarkan Waktu & Musim
 data_clustered = data.copy()
 data_clustered['total'] = data_clustered['casual'] + data_clustered['registered']
 
@@ -111,7 +109,7 @@ data_clustered['season_name'] = data_clustered['season'].map(season_map)
 
 pivot_heatmap = data_clustered.groupby(['time_cluster', 'season_name'])['total'].sum().unstack().fillna(0)
 
-st.subheader("🔥 Heatmap Total Penggunaan Sepeda berdasarkan Waktu & Musim")
+st.subheader("Heatmap Total Penggunaan Sepeda berdasarkan Waktu & Musim")
 fig3, ax3 = plt.subplots(figsize=(10, 6))
 sns.heatmap(
     pivot_heatmap,
