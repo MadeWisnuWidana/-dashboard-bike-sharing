@@ -20,3 +20,19 @@ Dashboard interaktif ini dibuat menggunakan **Streamlit** untuk menganalisis pol
 ```bash
 git clone https://github.com/username/dashboard-bike-sharing.git
 cd dashboard-bike-sharing
+```
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+### 3. Jalankan dashboard
+
+```bash
+streamlit run dashboard.py
+```
+Lalu buka browser dan akses:
+
+```bash
+(http://localhost:8501)
+```
