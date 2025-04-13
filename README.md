@@ -7,7 +7,7 @@ Dashboard interaktif ini dibuat menggunakan **Streamlit** untuk menganalisis pol
 ## Fitur Dashboard
 
 - Menampilkan data mentah Bike Sharing
-- Visualisasi perbandingan pengguna **casual vs registered** pada **weekday vs weekend**
+- Visualisasi perbandingan Penggunaan Sepeda **Weekday vs Weekend**
 - Analisis penggunaan sepeda berdasarkan **jam dan musim**
 - Heatmap interaktif untuk waktu puncak penggunaan sepeda
 
